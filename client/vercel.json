@@ -4,13 +4,7 @@
   "rewrites": [
     {
       "source": "/(.*)",
-      "has": [
-        { "type": "header", "key": "Accept", "value": "text/html" }
-      ],
       "destination": "/index.html"
     }
-  ],
-  "redirects": [
-    { "source": "/favicon.ico", "destination": "/vite.svg" }
   ]
 }
