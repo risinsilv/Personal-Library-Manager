@@ -2,7 +2,7 @@
 
 A full-stack web application for managing your personal book collection. Search for books using the Google Books API, save them to your library, track reading status, and write personal reviews.
 
-**Live Demo:** [https://personal-library-manager-eosin.vercel.app](https://personal-library-manager-eosin.vercel.app)
+**Live Demo:** [https://personal-library-manager-fzt35vahf-risinsilvs-projects.vercel.app](https://personal-library-manager-fzt35vahf-risinsilvs-projects.vercel.app)
 
 ## ✨ Features
 
@@ -247,15 +247,6 @@ The server follows the **Model-View-Controller (MVC)** pattern:
 ### Health Check
 - `GET /api/health` - Check server status
 
-## 🤝 Contributing
-
-Contributions are welcome! Please follow these steps:
-
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
 
 ## 📝 License
 
@@ -270,7 +261,7 @@ This project is open source and available under the [MIT License](LICENSE).
 
 - Google Books API for book data
 - MongoDB for database services
-- Vercel for hosting
+- Vercel and Render for hosting
 
 ---
 
