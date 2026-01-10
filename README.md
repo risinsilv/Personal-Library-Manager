@@ -62,6 +62,9 @@ JWT_SECRET=your_jwt_secret_key
 
 # Server Port (optional, defaults to 5000)
 PORT=5000
+
+#(Use the api key that you get from Google)
+VITE_GOOGLE_BOOKS_API_KEY = api_key
 ```
 
 #### Environment Variables Explanation:
