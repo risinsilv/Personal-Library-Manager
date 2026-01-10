@@ -5,6 +5,5 @@ import path from 'path'
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
-  // Read .env file from parent directory (root)
-  envDir: path.resolve(__dirname, '..'),
+  
 })
