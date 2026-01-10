@@ -6,5 +6,5 @@ import path from 'path'
 export default defineConfig({
   plugins: [react()],
   // Read .env file from parent directory (root)
-  envDir: path.resolve(__dirname, '..'),
+
 })
