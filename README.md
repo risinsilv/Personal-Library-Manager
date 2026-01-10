@@ -71,6 +71,7 @@ PORT=5000
 | `MONGO_URI` | MongoDB connection string. Use MongoDB Atlas or local MongoDB instance | `mongodb://localhost:27017/library-manager` or `mongodb+srv://username:password@cluster.mongodb.net/library-manager` |
 | `JWT_SECRET` | Secret key for signing JWT tokens. Should be a long, random string | `your_super_secret_random_string_here_123456` |
 | `PORT` | Port number for the backend server (optional) | `5000` |
+|`VITE_GOOGLE_BOOKS_API_KEY`| Goole Boooks Api Key | `yout api key for the book store`
 
 > **Note:** The `.env` file should be placed in the root directory, not inside `client` or `server` folders. Both the client (via Vite config) and server read from this shared `.env` file.
 
@@ -95,7 +96,7 @@ You'll need to run both the backend server and frontend client simultaneously.
 #### Terminal 1 - Start the Backend Server
 ```bash
 cd server
-npm run dev
+npm start
 ```
 The server will start on `http://localhost:5000`
 
