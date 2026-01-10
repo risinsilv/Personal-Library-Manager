@@ -1,226 +1,276 @@
-# Personal Library Manager
+# 📚 Personal Library Manager
 
-A full-stack MERN application that allows users to search for books using the Google Books API and manage their personal library.
+A full-stack web application for managing your personal book collection. Search for books using the Google Books API, save them to your library, track reading status, and write personal reviews.
 
-## 🚀 Features
+**Live Demo:** [https://personal-library-manager-eosin.vercel.app](https://personal-library-manager-eosin.vercel.app)
 
-- **Search Books**: Search for books by title, author, or keyword using Google Books API
-- **User Authentication**: Secure signup/login with JWT authentication
-- **Personal Library**: CRUD operations for managing saved books
-- **Book Status**: Track reading status (Want to Read, Reading, Completed)
-- **Personal Reviews**: Add reviews and notes to saved books
-- **Protected Routes**: Secure routes with JWT token validation
-- **Axios Interceptors**: Automatic token attachment and error handling
+## ✨ Features
+
+- 🔐 **User Authentication**: Secure signup and login with JWT-based authentication
+- 🔍 **Book Search**: Search for books using the Google Books API
+- 📖 **Library Management**: Save, update, and delete books from your personal library
+- 📊 **Reading Status**: Track books as "Want to Read", "Reading", or "Completed"
+- ✍️ **Personal Reviews**: Add your own reviews and notes for each book
+- 📱 **Responsive Design**: Built with Material-UI for a modern, mobile-friendly interface
 
 ## 🛠️ Tech Stack
 
 ### Frontend
-- React.js (Hooks)
-- Material-UI (MUI)
-- Axios with Interceptors
-- React Router
-- Context API for state management
+- **React 19** - UI framework
+- **Vite** - Build tool and development server
+- **Material-UI (MUI)** - Component library
+- **React Router DOM** - Client-side routing
+- **Axios** - HTTP client for API requests
+- **Styled Components** - CSS-in-JS styling
 
 ### Backend
-- Node.js
-- Express.js
-- MongoDB with Mongoose
-- JWT Authentication
-- bcryptjs for password hashing
+- **Node.js** - Runtime environment
+- **Express.js** - Web framework
+- **MongoDB** - NoSQL database
+- **Mongoose** - MongoDB ODM
+- **JWT** - Authentication tokens
+- **bcryptjs** - Password hashing
+- **Jest & Supertest** - Testing framework
 
 ## 📋 Prerequisites
 
-- Node.js (v14 or higher)
-- MongoDB (local or Atlas)
-- npm or yarn
+Before running this application, make sure you have the following installed:
 
-## ⚙️ Installation
+- **Node.js** (v14 or higher)
+- **npm** or **yarn**
+- **MongoDB** (local installation or MongoDB Atlas account)
 
-### 1. Clone the repository
+## 🚀 Getting Started
+
+### 1. Clone the Repository
+
 ```bash
-git clone <your-repo-url>
-cd "The Personal Library Manger Ceylon X"
+git clone https://github.com/risinsilv/Personal-Library-Manager.git
+cd Personal-Library-Manager
 ```
 
-### 2. Install backend dependencies
+### 2. Environment Variables
+
+Create a `.env` file in the **root directory** of the project (same level as `client` and `server` folders) with the following variables:
+
+```env
+# MongoDB Connection
+MONGO_URI=your_mongodb_connection_string
+
+# JWT Secret (use a strong, random string)
+JWT_SECRET=your_jwt_secret_key
+
+# Server Port (optional, defaults to 5000)
+PORT=5000
+```
+
+#### Environment Variables Explanation:
+
+| Variable | Description | Example |
+|----------|-------------|---------|
+| `MONGO_URI` | MongoDB connection string. Use MongoDB Atlas or local MongoDB instance | `mongodb://localhost:27017/library-manager` or `mongodb+srv://username:password@cluster.mongodb.net/library-manager` |
+| `JWT_SECRET` | Secret key for signing JWT tokens. Should be a long, random string | `your_super_secret_random_string_here_123456` |
+| `PORT` | Port number for the backend server (optional) | `5000` |
+
+> **Note:** The `.env` file should be placed in the root directory, not inside `client` or `server` folders. Both the client (via Vite config) and server read from this shared `.env` file.
+
+### 3. Install Dependencies
+
+#### Install Server Dependencies
 ```bash
 cd server
 npm install
 ```
 
-### 3. Install frontend dependencies
+#### Install Client Dependencies
 ```bash
 cd ../client
-npm install react-router-dom
+npm install
 ```
 
-### 4. Environment Variables
+### 4. Run the Application
 
-Create a `.env` file in the **root directory** (not in client or server folders):
+You'll need to run both the backend server and frontend client simultaneously.
 
-```env
-# Backend API
-VITE_API_URL=http://localhost:5000/api
-
-# Google Books API (Optional)
-VITE_GOOGLE_BOOKS_API_KEY=
-
-# MongoDB
-MONGO_URI=mongodb://localhost:27017/personal-library
-
-# JWT Secret
-JWT_SECRET=your_super_secret_jwt_key_change_this_in_production
-
-# Server Port
-PORT=5000
-
-NODE_ENV=development
-```
-
-**Important**: 
-- Frontend variables must be prefixed with `VITE_`
-- Get a Google Books API key from [Google Cloud Console](https://console.developers.google.com/) (optional but recommended)
-
-## 🚀 Running the Application
-
-### Start MongoDB
-Make sure MongoDB is running on your machine or use MongoDB Atlas.
-
-### Start Backend Server
+#### Terminal 1 - Start the Backend Server
 ```bash
 cd server
 npm run dev
 ```
-Server will run on `http://localhost:5000`
+The server will start on `http://localhost:5000`
 
-### Start Frontend
+#### Terminal 2 - Start the Frontend Client
 ```bash
 cd client
 npm run dev
 ```
-Frontend will run on `http://localhost:5173`
+The client will start on `http://localhost:5173` (or another port if 5173 is in use)
+
+### 5. Access the Application
+
+Open your browser and navigate to:
+```
+http://localhost:5173
+```
+
+## 🧪 Running Tests
+
+The project includes Jest tests for the backend API.
+
+```bash
+cd server
+npm test
+```
 
 ## 📁 Project Structure
 
 ```
-root/
-├── client/                  # React frontend
-│   ├── src/
-│   │   ├── api/            # Axios instance & API services
-│   │   │   ├── axios.js    # Axios with interceptors
-│   │   │   ├── authService.js
-│   │   │   ├── booksService.js
-│   │   │   ├── googleBooksService.js
-│   │   │   └── index.js
-│   │   ├── components/     # Reusable components
-│   │   │   ├── Navbar.jsx
-│   │   │   ├── BookCard.jsx
-│   │   │   └── ProtectedRoute.jsx
-│   │   ├── context/        # Context API
-│   │   │   └── AuthContext.jsx
-│   │   ├── pages/          # Page components
-│   │   │   ├── Login.jsx
-│   │   │   ├── Search.jsx
-│   │   │   └── Library.jsx
-│   │   └── app/
-│   │       └── App.jsx     # Main app with routing
-│   └── package.json
+Personal-Library-Manager/
+├── client/                    # Frontend React application
+│   ├── public/               # Static assets
+│   ├── src/                  # React source code
+│   │   ├── components/       # Reusable components
+│   │   ├── pages/           # Page components
+│   │   ├── services/        # API service calls
+│   │   └── App.jsx          # Main app component
+│   ├── package.json         # Frontend dependencies
+│   └── vite.config.js       # Vite configuration
 │
-├── server/                 # Express backend
-│   ├── models/            # Mongoose models
-│   │   ├── User.js
-│   │   └── Book.js
-│   ├── routes/            # API routes
-│   │   ├── auth.js
-│   │   └── books.js
-│   ├── controllers/       # Route controllers
-│   │   ├── authController.js
-│   │   └── bookController.js
-│   ├── middleware/        # Custom middleware
-│   │   └── auth.js
-│   ├── index.js          # Server entry point
-│   └── package.json
+├── server/                   # Backend Node.js application
+│   ├── controllers/         # Route controllers
+│   │   ├── authController.js    # Authentication logic
+│   │   └── bookController.js    # Book CRUD operations
+│   ├── middleware/          # Custom middleware
+│   │   └── auth.js          # JWT authentication middleware
+│   ├── models/              # Mongoose models
+│   │   ├── User.js          # User schema
+│   │   └── Book.js          # Book schema
+│   ├── routes/              # API routes
+│   │   ├── auth.js          # Authentication routes
+│   │   └── books.js         # Book routes
+│   ├── tests/               # Jest tests
+│   ├── app.js               # Express app configuration
+│   ├── index.js             # Server entry point
+│   └── package.json         # Backend dependencies
 │
-├── .env                   # Environment variables (create this)
-├── .env.example          # Environment template
-└── README.md
+├── .env                      # Environment variables (create this)
+├── .gitignore               # Git ignore file
+└── README.md                # This file
 ```
 
-## 🔐 Authentication Flow
+## 🏗️ Architecture & Design Decisions
 
-1. User signs up with username, email, and password
-2. Password is hashed using bcryptjs
-3. JWT token is generated and sent to client
-4. Token is stored in localStorage
-5. Axios interceptors automatically attach token to API requests
-6. Protected routes verify token before allowing access
-7. On 401 error, user is automatically logged out
+### Overall Architecture
+The application follows a **client-server architecture** with a clear separation between frontend and backend:
+
+- **Frontend (Client)**: A Single Page Application (SPA) built with React and Vite
+- **Backend (Server)**: A RESTful API built with Express.js
+- **Database**: MongoDB for flexible, document-based data storage
+
+### Backend Architecture
+
+#### 1. **MVC Pattern**
+The server follows the **Model-View-Controller (MVC)** pattern:
+- **Models** (`models/`): Define data schemas using Mongoose (User, Book)
+- **Controllers** (`controllers/`): Handle business logic and request processing
+- **Routes** (`routes/`): Define API endpoints and map them to controllers
+
+#### 2. **Middleware-Based Request Flow**
+- **CORS Middleware**: Enables cross-origin requests from the frontend
+- **JSON Parsing**: Built-in Express middleware for parsing request bodies
+- **Authentication Middleware** (`middleware/auth.js`): JWT token verification for protected routes
+
+#### 3. **Authentication Strategy**
+- **JWT (JSON Web Tokens)**: Stateless authentication mechanism
+- **bcryptjs**: Secure password hashing before storing in database
+- **Protected Routes**: All book-related endpoints require valid JWT tokens
+
+#### 4. **Database Design**
+- **User Model**: Stores user credentials and profile information
+- **Book Model**: Stores book data with references to the owning user
+- **Compound Index**: Prevents duplicate books per user using `{ user: 1, googleBooksId: 1 }`
+
+### Frontend Architecture
+
+#### 1. **Component-Based Structure**
+- Reusable React components for UI elements
+- Material-UI for consistent design language
+- Styled Components for custom styling
+
+#### 2. **Client-Side Routing**
+- React Router DOM for navigation
+- Protected routes requiring authentication
+
+#### 3. **State Management**
+- React hooks (useState, useEffect) for local state
+- Axios for API communication with the backend
+
+#### 4. **Build Tool**
+- **Vite**: Fast development server and optimized production builds
+- Custom configuration to read `.env` from parent directory
+
+### Security Considerations
+
+1. **Password Security**: Passwords are hashed using bcryptjs before storage
+2. **Token-Based Auth**: JWT tokens expire and must be validated on each request
+3. **Authorization**: Users can only access their own books (enforced at the database level)
+4. **Environment Variables**: Sensitive data stored in `.env` file (not committed to Git)
+
+### Scalability Considerations
+
+1. **Stateless Backend**: JWT authentication allows horizontal scaling
+2. **Database Indexing**: Compound indexes optimize query performance
+3. **Separation of Concerns**: Clear separation between frontend and backend allows independent scaling
+4. **RESTful API**: Standard API design makes it easy to add new clients (mobile apps, etc.)
+
+### Development Workflow
+
+1. **Nodemon**: Automatic server restart during development
+2. **Vite HMR**: Hot Module Replacement for instant frontend updates
+3. **Jest Testing**: Automated testing for backend API endpoints
+4. **MongoDB Memory Server**: In-memory database for testing without affecting production data
 
 ## 📡 API Endpoints
 
-### Auth Routes
-- `POST /api/auth/signup` - Create new user
-- `POST /api/auth/login` - Login user
+### Authentication
+- `POST /api/auth/signup` - Register a new user
+- `POST /api/auth/login` - Login and receive JWT token
 
-### Book Routes (Protected)
-- `GET /api/books` - Get all user's books
-- `GET /api/books/:id` - Get single book
-- `POST /api/books` - Save book to library
-- `PUT /api/books/:id` - Update book (status, review)
-- `DELETE /api/books/:id` - Delete book
+### Books (Protected Routes)
+- `GET /api/books` - Get all books for authenticated user
+- `GET /api/books/:id` - Get a specific book by ID
+- `POST /api/books` - Save a new book to library
+- `PUT /api/books/:id` - Update book details
+- `DELETE /api/books/:id` - Delete a book from library
 
-## 🎨 Design Decisions
+### Health Check
+- `GET /api/health` - Check server status
 
-### Axios Interceptors
-- **Request Interceptor**: Automatically attaches JWT token from localStorage to every API call
-- **Response Interceptor**: Handles global errors (401, 403, 404, 500) and network errors
+## 🤝 Contributing
 
-### Architecture
-- **Separation of Concerns**: Clear separation between API logic, components, and pages
-- **Context API**: Simple state management for authentication
-- **Protected Routes**: HOC pattern for route protection
-- **Material-UI**: Modern, consistent UI with minimal custom CSS
+Contributions are welcome! Please follow these steps:
 
-### Security
-- Passwords hashed with bcryptjs (salt rounds: 10)
-- JWT tokens with 7-day expiration
-- Protected API routes with middleware
-- Token validation on every protected request
-
-## 🌟 Usage
-
-1. **Sign Up/Login**: Create an account or login
-2. **Search Books**: Use the search bar to find books
-3. **Save Books**: Click "Save to Library" on any book
-4. **Manage Library**: View, edit status, add reviews, or delete books
-5. **Track Progress**: Use status to track reading progress
-
-## 📦 Packages to Install
-
-If you haven't installed react-router-dom yet:
-
-```bash
-cd client
-npm install react-router-dom
-```
-
-Backend packages (already in package.json):
-```bash
-cd server
-npm install
-```
-
-## 🐛 Troubleshooting
-
-- **MongoDB Connection Error**: Make sure MongoDB is running or check your MONGO_URI
-- **CORS Error**: Ensure backend server is running on port 5000
-- **Token Issues**: Clear localStorage and login again
-- **Environment Variables**: Make sure .env file is in the root directory
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
 
 ## 📝 License
 
-MIT
+This project is open source and available under the [MIT License](LICENSE).
 
 ## 👤 Author
 
-Your Name
+**risinsilv**
+- GitHub: [@risinsilv](https://github.com/risinsilv)
+
+## 🙏 Acknowledgments
+
+- Google Books API for book data
+- MongoDB for database services
+- Vercel for hosting
+
+---
+
+**Need Help?** If you encounter any issues or have questions, please open an issue on GitHub.
