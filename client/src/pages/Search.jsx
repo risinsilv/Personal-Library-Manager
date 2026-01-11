@@ -191,8 +191,8 @@ const Search = () => {
         }}
       >
         <Container sx={{
-          width: { xs: '90vw', sm: '70vw', md: '60vw' },
-          maxWidth: { xs: 380, sm: 500, md: 900 },
+          width: { xs: '90vw', sm: '80vw', md: '80vw' },
+          maxWidth: { xs: 380, sm: 700, md: 1200 },
           minWidth: { xs: 280, sm: 360, md: 480 }
         }}>
           <Paper 
