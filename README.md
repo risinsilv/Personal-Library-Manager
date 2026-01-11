@@ -2,7 +2,7 @@
 
 A full-stack web application for managing your personal book collection. Search for books using the Google Books API, save them to your library, track reading status, and write personal reviews.
 
-**Live Demo:** [personal-library-manager-git-vercel-deploy-risinsilvs-projects.vercel.app](personal-library-manager-git-vercel-deploy-risinsilvs-projects.vercel.app)
+**Live Demo:** [https://personal-library-manager-git-vercel-deploy-risinsilvs-projects.vercel.app/](https://personal-library-manager-git-vercel-deploy-risinsilvs-projects.vercel.app/)
 
 ## ✨ Features
 
