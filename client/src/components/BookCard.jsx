@@ -18,7 +18,7 @@ const StyledCard = styled(Card)({
   height: '500px',
   width:'20vw',
   maxWidth:'500px',
-  minWidth:'300px',
+  minWidth:'320px',
   display: 'flex',
   flexDirection: 'column',
   position: 'relative',

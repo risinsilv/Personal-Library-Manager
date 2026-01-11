@@ -16,7 +16,7 @@ const Navbar = () => {
 
   return (
     <AppBar position="sticky" sx={{ backgroundColor: mode === 'light' ? 'white' : 'black', color: mode === 'light' ? 'black' : 'white' }}>
-      <Toolbar sx={{ display: 'flex', alignItems: 'center', position: 'relative' }}>
+      <Toolbar sx={{ display: 'flex', alignItems: 'center', position: 'relative', px: { xs: 1, sm: 2 } }}>
         {/* Left: Brand */}
         <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, cursor: 'pointer' }} onClick={() => navigate('/')}> 
           <MenuBookIcon sx={{ color: '#2c67f2' }} />
@@ -32,7 +32,7 @@ const Navbar = () => {
           position: 'absolute',
           left: '50%',
           transform: 'translateX(-50%)',
-          display: 'flex',
+          display: { xs: 'none', md: 'flex' },
           gap: 2,
           alignItems: 'center',
         }}>
@@ -64,11 +64,31 @@ const Navbar = () => {
         </Box>
 
         {/* Right: actions (theme, auth, user) */}
-        <Box sx={{ display: 'flex', gap: {xs:'0', sm:'0', md:'2'}, alignItems: 'center', marginLeft: 'auto', }}>
+        <Box sx={{ display: 'flex', gap: { xs: 0.5, sm: 1, md: 2 }, alignItems: 'center', marginLeft: 'auto' }}>
           {/* Light icon instead of switch */}
           <IconButton color="inherit" onClick={toggleTheme} aria-label="toggle theme">
             <LightModeIcon sx={{ color: '#2c67f2' }} />
           </IconButton>
+
+          {/* Compact nav icons on mobile to avoid overlap */}
+          <IconButton
+            color="inherit"
+            onClick={() => navigate('/')}
+            aria-label="go to search"
+            sx={{ display: { xs: 'inline-flex', md: 'none' } }}
+          >
+            <SearchIcon />
+          </IconButton>
+          {isAuthenticated && (
+            <IconButton
+              color="inherit"
+              onClick={() => navigate('/library')}
+              aria-label="go to library"
+              sx={{ display: { xs: 'inline-flex', md: 'none' } }}
+            >
+              <LibraryBooksIcon />
+            </IconButton>
+          )}
 
           {isAuthenticated ? (
             <>
@@ -84,7 +104,7 @@ const Navbar = () => {
               </Button>
               {/* Username at the far right (only when available) */}
               {user?.username && (
-                <Typography variant="body1" sx={{ color: '#2c67f2', fontWeight: 600, fontSize: 14 }}>
+                <Typography variant="body1" sx={{ color: '#2c67f2', fontWeight: 600, fontSize: 14, display: { xs: 'none', sm: 'none', md: 'inline' } }}>
                   {user.username}
                 </Typography>
               )}
