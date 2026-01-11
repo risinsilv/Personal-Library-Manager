@@ -134,19 +134,29 @@ const Login = () => {
        height: 'calc(100vh - 64px)',
         display: 'flex',
         alignItems: 'center',
+        justifyContent: 'center',
         backgroundImage: `url(${LoginBackground})`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',
         overflow: 'hidden',
+        px: { xs: 2, sm: 0 },
       }}
     >
-      <Container sx={{minWidth:'450px', maxWidth:'600px', width:"30vw" , border: 'none', borderRadius: 5,backgroundColor: mode === 'light' ? 'rgba(255, 255, 255, 0.6)' : 'rgba(18, 18, 18, 0.89)'}}>
-        <Paper elevation={0} sx={{ p: 3, borderRadius: 2, backgroundColor:'transparent' }}>
-          <Typography variant="h3" align="left" fontWeight={600}>
+      <Container sx={{
+        minWidth: 280,
+        width: { xs: '92vw', sm: '80vw', md: '30vw' },
+        maxWidth: { xs: 420, sm: 700, md: 800 },
+        minWidth: {xs: 280, sm: 400, md: 600},
+        border: 'none',
+        borderRadius: 5,
+        backgroundColor: mode === 'light' ? 'rgba(255, 255, 255, 0.6)' : 'rgba(18, 18, 18, 0.89)'
+      }}>
+        <Paper elevation={0} sx={{ p: { xs: 2, sm: 3 }, borderRadius: 2, backgroundColor:'transparent' }}>
+          <Typography variant="h3" align="left" fontWeight={600} sx={{ fontSize: { xs: '1.75rem', sm: '2rem', md: '2.5rem' } }}>
             {isSignup ? 'Sign Up' : 'Login'}
           </Typography>
-          <Typography variant="body2" align="left" color="text.secondary" sx={{ mb: 3 }} fontWeight={600}>
+          <Typography variant="body2" align="left" color="text.secondary" sx={{ mb: { xs: 2, sm: 3 } }} fontWeight={600}>
             Manage your reading collection
           </Typography>
 
@@ -215,6 +225,7 @@ const Login = () => {
               sx={{
                 mt: 3,
                 py: 1.5,
+                height: { xs: 48, sm: 58 },
                 
               }}
             >
