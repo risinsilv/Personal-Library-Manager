@@ -184,34 +184,41 @@ const Search = () => {
           backgroundImage: `url(${SearchBackground})`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
-          py: 10,
+          py: { xs: 6, sm: 8, md: 10 },
+          display: 'flex',
+          justifyContent: 'center',
+          px: { xs: 2, sm: 0 },
         }}
       >
-        <Container sx={{width:"70vw", minWidth:'500px'}}>
+        <Container sx={{
+          width: { xs: '90vw', sm: '70vw', md: '60vw' },
+          maxWidth: { xs: 380, sm: 500, md: 900 },
+          minWidth: { xs: 280, sm: 360, md: 480 }
+        }}>
           <Paper 
             elevation={0} 
             sx={{ 
-              p: 4, 
+              p: { xs: 2, sm: 3, md: 4 }, 
               borderRadius: 3, 
               backgroundColor: mode === 'light' ? 'rgba(255, 255, 255, 0.95)' : 'rgba(18, 18, 18, 0.95)',
               border: 'none',
             }}
           >
-            <Typography variant="h4" gutterBottom fontWeight={600}>
+            <Typography variant="h4" gutterBottom fontWeight={600} sx={{ fontSize: { xs: '0.9rem', sm: '1.75rem', md: '2rem' } }}>
               Search Books
             </Typography>
-            <Typography variant="body1" color="text.secondary" sx={{ mb: 3 }}>
+            <Typography variant="body1" color="text.secondary" sx={{ mb: 3, fontSize: { xs: '0.8rem', sm: '1rem', md: '1.125rem' } }}>
               Search for books by title, author, or keyword
             </Typography>
 
             {/* Filters */}
-            <Box sx={{ display: 'flex', gap: 2, mb: 2, flexWrap: 'wrap' }}>
+            <Box sx={{ display: 'flex', gap: 2, mb: 2, flexWrap: 'wrap', width: '100%' }}>
               <StyledTextField
                 select
                 label="Search In"
                 value={searchField}
                 onChange={(e) => setSearchField(e.target.value)}
-                sx={{ minWidth: 180 }}
+                sx={{ minWidth: { xs: '100%', sm: 160 } }}
               >
                 <MenuItem value="keywords">Keywords</MenuItem>
                 <MenuItem value="title">Title</MenuItem>
@@ -223,7 +230,7 @@ const Search = () => {
                 label="Print Type"
                 value={printType}
                 onChange={(e) => setPrintType(e.target.value)}
-                sx={{ minWidth: 180 }}
+                sx={{ minWidth: { xs: '100%', sm: 160 }}}
               >
                 <MenuItem value="all">All</MenuItem>
                 <MenuItem value="books">Books</MenuItem>
@@ -235,8 +242,8 @@ const Search = () => {
                 label="Filter"
                 value={ebookFilter}
                 onChange={(e) => setEbookFilter(e.target.value)}
-                sx={{ minWidth: 180 }}
-              >
+                sx={{ minWidth: { xs: '100%', sm: 160 }}}
+                >
                 <MenuItem value="">None</MenuItem>
                 <MenuItem value="free-ebooks">Free E-books</MenuItem>
                 <MenuItem value="paid-ebooks">Paid E-books</MenuItem>
@@ -245,12 +252,13 @@ const Search = () => {
             </Box>
 
             <form onSubmit={handleSearch}>
-              <Box sx={{ display: 'flex', gap: 2,flexWrap: 'wrap' }}>
+              <Box sx={{ display: 'flex', gap: 2, flexWrap: 'wrap', width: '100%' }}>
                 <StyledTextField
                   fullWidth
                   value={query}
                   onChange={(e) => setQuery(e.target.value)}
                   placeholder="Enter book title, author, or keyword..."
+                  
                   InputProps={{
                     startAdornment: (
                       <InputAdornment position="start">
@@ -265,7 +273,13 @@ const Search = () => {
                   variant="contained"
                   size="large"
                   disabled={loading}
-                  sx={{backgroundColor: mode === 'light' ? '#000000' : 'white', color: mode === 'light' ? 'white' : 'black'}}
+                  sx={{
+                    backgroundColor: mode === 'light' ? '#000000' : 'white',
+                    color: mode === 'light' ? 'white' : 'black',
+                    width: { xs: '100%', sm: 'auto' },
+                    minWidth: { sm: 100 },
+                    height: { xs: 48, sm: 56 }
+                  }}
                 >
                   {loading ? <CircularProgress size={24} color="inherit" /> : 'Search'}
                 </SearchButton>
@@ -285,7 +299,7 @@ const Search = () => {
       </Box>
 
       {/* Results Section */}
-      <Container maxWidth="100vw" sx={{ py: 4 }} >
+      <Container maxWidth={false} sx={{ py: 4, width: { xs: '90vw', sm: '85vw', md: '80vw' }, minWidth: { xs: 280, sm: 360 }, px: { xs: 2, sm: 0 } }} >
 
         {loading ? (
           <Box sx={{ display: 'flex', justifyContent: 'center', py: 8,  }}>
